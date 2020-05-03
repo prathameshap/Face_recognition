@@ -6,6 +6,7 @@ import cv2
 
 cap  = cv2.VideoCapture(0)
 path = "haarcascade_frontalface_default.xml"
+face_cascade = cv2.CascadeClassifier(path)
 
 while(True):
 
@@ -14,8 +15,6 @@ while(True):
     frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
     #cv2.imshow("Frame", frame)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    face_cascade = cv2.CascadeClassifier(path)
 
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=5, minSize=(40,40))
 
